@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 
-'textFile.py -- create/display text files'
+'textFile.py -- create/display/edit text files'
 
 import sys,os
 from os import linesep as ls
 from shutil import get_terminal_size as term_size
 
 # calculate number of # to fill term width
-prg_dialogue = "Enter file name (back to return to main screen): "
 nb_hash = term_size()[0]
 hash_line = "#" * nb_hash
+prg_dialogue = "Enter file name ('back' to return to main screen, 'exit' to exit program): "
+
+# function to exit program
+def exit_prog():
+    print("Program exit!")
+    sys.exit(0)
 
 # function to create file
 def write_file():
@@ -20,6 +25,8 @@ def write_file():
             print("Going back to main program")
             create_file = False
             break
+        elif fname == "exit":
+            exit_prog()
         elif os.path.exists(fname):
             print("ERROR: %s already exists" % fname)
         else:
@@ -52,6 +59,8 @@ def read_file():
         if fname == "back":
             print("Going back to main program")
             break
+        elif fname == "exit":
+            exit_prog()
         elif not os.path.exists(fname):
             print("ERROR: %s doesn't exist" % fname)
             continue
@@ -72,6 +81,8 @@ def edit_file():
         if fname == "back":
             print("Going back to main program")
             break
+        elif fname == "exit":
+            exit_prog()
         elif not os.path.exists(fname):
             print("ERROR: %s doesn't exist" % fname)
             continue
@@ -113,8 +124,7 @@ def main():
             edit_file()
             continue
         elif action == "exit":
-            print("Program exit!")
-            sys.exit(0)
+            exit_prog()
         else:
             print("Unrecognized command: %s" % action)
         continue
