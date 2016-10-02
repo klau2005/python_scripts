@@ -88,3 +88,23 @@ def calc_app():
     if str(result).split(".")[1] == "0":
         result = int(result)
     return result
+
+def sales_tax():
+    err_msg = "Enter only numbers"
+    vat = 16
+    cas = 11
+    unemploy = 10.5
+    while True:
+        amount = input("Enter monatary amount in RON: ")
+        try:
+            amount = float(amount)
+            break
+        except ValueError:
+            print(err_msg)
+            continue
+    vat_amount = amount * vat / 100
+    cas_amount = amount * cas / 100
+    unemploy_amount = amount * unemploy / 100
+    total_tax_amount = amount + vat_amount + cas_amount + unemploy_amount
+    total_fmt = "%.2f RON" % total_tax_amount
+    return total_fmt
