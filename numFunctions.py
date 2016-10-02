@@ -55,6 +55,8 @@ def calc_app():
     type_err = "Use only integers/floats for N1 and N2"
     while True:
         calc = input("Enter 2 numbers and an operand (N1 OP N2): ")
+        if len(calc.split()) != 3:
+            continue
         try:
             n1 = float(calc.split()[0])
             n2 = float(calc.split()[2])
