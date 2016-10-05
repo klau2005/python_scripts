@@ -1,3 +1,5 @@
+from math import pi
+
 def product(x, y):
     return x * y
 
@@ -48,7 +50,7 @@ def calculate_change():
     return change_dict
 
 def type_err():
-    print(
+    print()
 
 def calc_app():
     oper_err = "Use only '+', '-', '*', '/', '%' or '**' for OP"
@@ -108,3 +110,52 @@ def sales_tax():
     total_tax_amount = amount + vat_amount + cas_amount + unemploy_amount
     total_fmt = "%.2f RON" % total_tax_amount
     return total_fmt
+
+def is_num(b, c, a=0):
+    while True:
+        a = input("enter number to calcuate %s %s: " % (b, c))
+        try:
+            number = int(a)
+            break
+        except ValueError:
+            print("use only decimals")
+            continue
+    return number
+
+def geometry():
+    err_msg = "please select only allowed words"
+    while True:
+        measure = input("select area or volume: ")
+        if measure == "area":
+            shape = input("select square or circle: ")
+        elif measure == "volume":
+            shape = input("select cube or sphere: ")
+        else:
+            print(err_msg)
+            continue
+        if shape == "square":
+            side = is_num(shape, measure)
+            area = side ** 2
+            result = "%s area is %d" % (shape, area)
+            break
+        elif shape == "circle":
+            radius = is_num(shape, measure)
+            area = 2 * pi * radius
+            result = "%s area is %d" % (shape, area)
+            break
+        elif shape == "cube":
+            side = is_num(shape, measure)
+            area = side ** 3
+            result = "%s area is %d" % (shape, area)
+            break
+        elif shape == "sphere":
+            radius = is_num(shape, measure)
+            area = (4/3) * pi * (radius ** 3)
+            result = "%s area is %d" % (shape, area)
+            break
+        else:
+            print(err_msg)
+            continue
+    return result
+        
+            
