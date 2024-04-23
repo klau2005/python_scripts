@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # K8S cluster resources allocation and usage
-# this script gets data from K8S master in GSMA cluster
 # Date: May 2017
 # Author: Claudiu Tomescu
-# e-mail: klau2005@gmail.com
+# e-mail: klau2005@tutanota.com
 
 import re, sys, requests
 from subprocess import getstatusoutput as get_stat
